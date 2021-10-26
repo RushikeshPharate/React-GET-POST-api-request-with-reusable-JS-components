@@ -4,8 +4,8 @@ function Post(props){
 
     return(
         <div>
-            <li className={classes.post}>
-                <p>{props.content}</p>
+            <li className={classes.post} key={'props.content'}>
+                {props.content}
             </li>
         </div>
     );

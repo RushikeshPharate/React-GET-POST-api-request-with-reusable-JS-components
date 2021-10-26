@@ -1,7 +1,7 @@
 import React from 'react'
 
 import './App.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PostsList from './components/PostsList';
 import CreatePost from './components/CreatePost';
 
@@ -11,6 +11,8 @@ function App() {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(false)
 
+    
+
     async function fetchPostsHandler(){
       setIsLoading(true);
       const response = await fetch("http://127.0.0.1:8000/posts");
@@ -18,6 +20,10 @@ function App() {
       setPosts(data);
       setIsLoading(false)
     }
+
+    useEffect(()=>{
+        fetchPostsHandler();
+    },[]);
 
   /* 
     const [loading, setloading] = useState(true)
